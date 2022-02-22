@@ -1,11 +1,10 @@
 import sys
 
 def reverse(x):
-    x.swapcase()
-    print(x)
     return x[::-1]
-
-argv = sys.argv[1:]
-str = reverse(' '.join(argv[::-1]))
-test = str.
-print(str)
+if len(sys.argv) == 1:
+    print(" ")
+else:
+    argv = sys.argv[1:]
+    str = reverse(' '.join(argv))
+    print(str.swapcase())
