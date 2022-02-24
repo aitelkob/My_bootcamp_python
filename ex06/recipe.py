@@ -84,6 +84,6 @@ while 1:
     print("Please select an option by typing the corresponding number:")
     print("1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit")
     choice = input(">>")
-    if error_manage(choice):
-        menu(int(choice))
+    #if the input not int or choise print("") and choice = 0
+    menu(int(choice))
 

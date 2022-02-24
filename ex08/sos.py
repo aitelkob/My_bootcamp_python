@@ -17,10 +17,19 @@ dict_code = { 'A':'.-', 'B':'-...',
              '?':'..--..', '/':'-..-.', '-':'-....-',
              '(':'-.--.', ')':'-.--.-'}
 
-sentence = sys.argv[1].upper()
-mourse = ""
 
-for char in sentence:
-    mourse+=dict_code[char] + " "
+#chek_if char have == key in dict
+def mourse(text):
+    sentence = sys.argv[1].upper()
+    mourse = ""
+    for char in sentence:
+        mourse+=dict_code[char] + " "
+    return mourse
+if len(sys.argv) > 1:
+    str = sys.argv[1]
+    for i in range(len(sys.argv) - 2):
+        str = str + " " + sys.argv[i + 2]
+    #mourse
+
 
 print(mourse)
