@@ -18,20 +18,32 @@ dict_code = { 'A':'.-', 'B':'-...',
              '(':'-.--.', ')':'-.--.-'}
 
 
-#chek_if char have == key in dict
-code = ""
-def mourse(text):
-    sentence = text.upper()
-    print(sentence)
-    mourse = ""
-    for char in sentence:
-        mourse+=dict_code[char] + " "
-    return mourse
-if len(sys.argv) > 1:
-    str = str(sys.argv[1:])
-    for i in range(len(sys.argv) - 2):
-        str = str + " " + sys.argv[i + 2]
-    code = mourse(str)
 
+
+"""""if len(sys.argv) < 2:
+		print("ERROR")
+		return
+	for each in sys.argv[1:]:
+		if not each.replace(' ','').isalnum():
+			print("ERROR")
+			return
+	for each in sys.argv[1:]:
+		for c in each:
+			if c == ' ':
+				print(" / ", end='')
+			else:
+				print(chars[c.upper()], end='')
+		if each != sys.argv[-1]:
+			print(" / ", end='')
+		else:
+			print()"""""
+if len(sys.argv) <= 1:
+    exit()
+
+
+code = []
+text = [string.upper() for string in sys.argv[1:]]
+for string in args:
+    res.append(" ".join([morse_dict[letter] for letter in string]))
 
 print(code)
