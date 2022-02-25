@@ -18,32 +18,17 @@ dict_code = { 'A':'.-', 'B':'-...',
              '(':'-.--.', ')':'-.--.-'}
 
 
-
-
-"""""if len(sys.argv) < 2:
-		print("ERROR")
-		return
-	for each in sys.argv[1:]:
-		if not each.replace(' ','').isalnum():
-			print("ERROR")
-			return
-	for each in sys.argv[1:]:
-		for c in each:
-			if c == ' ':
-				print(" / ", end='')
-			else:
-				print(chars[c.upper()], end='')
-		if each != sys.argv[-1]:
-			print(" / ", end='')
-		else:
-			print()"""""
 if len(sys.argv) <= 1:
+    print("ERROR")
     exit()
-
-
 code = []
 text = [string.upper() for string in sys.argv[1:]]
-for string in args:
-    res.append(" ".join([morse_dict[letter] for letter in string]))
+for string in text:
+    for char in string:
+        if (char == ' '):
+            code.append("/")
+        else:
+            code.append(dict_code[char])
 
-print(code)
+print(" ".join([str(letter) for letter in code]))
+

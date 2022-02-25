@@ -25,9 +25,9 @@ cookbook = {
 def print_recipe_from_cookbook(recipe):
     if recipe in cookbook.keys():
         print("Recipe for {}:".format(recipe))
-        print("Ingredient list: {}".format(cookbook[recipe][0]))
-        print("To be eaten for {}.".format(cookbook[recipe][1]))
-        print("Takes {} minutes of cooking.".format(cookbook[recipe][2]))
+        print("Ingredient list: {}".format(cookbook[recipe]["ingredients"]))
+        print("To be eaten for {}.".format(cookbook[recipe]["meal"]))
+        print("Takes {} minutes of cooking.".format(cookbook[recipe]["prep_time"]))
     else:
         print("Invalid recipe name.")
 
@@ -40,19 +40,12 @@ def del_recipe(recipe):
         print("Invalid recipe name.")
 
 def add_recipe(recipe,ingredients, meal ,prep_time):
-    cookbook[recipe] = (ingredients, meal,prep_time)
-    print(cookbook[recipe])
+    cookbook[recipe] = {"ingredients": ingredients ,"meal": meal,"prep_time" : prep_time}
     print("Added '{}' to cookbook.".format(recipe))
 
 def print_all_recipe():
     [print_recipe_from_cookbook(recipe) for recipe in cookbook.keys()]
 
-def error_manage(choice):
-    if (not choice.isdigit()):
-        print("This option does not exist, please type the corresponding number.\nTo exit, enter 5.")
-        return False
-    else:
-        return True
 def menu(choice):
         clr()
         if choice == 1:
@@ -60,8 +53,8 @@ def menu(choice):
             if name in cookbook.keys():
                 print("'{}' already exists, overwriting...".format(name))
                 return
-            ingredients = input("Enter the ingredients in the format "
-                            "'flour,sugar, eggs...': ").split(',')
+            ingredients = (input("Enter the ingredients in the format "
+                            "'flour,sugar, eggs...': ").split(','))
             meal = input("Enter the type of meal (lunch, dessert...): ")
             time = input("Enter the recipe's prep time, in minutes: ")
             add_recipe(name, ingredients, meal, time)
@@ -84,6 +77,7 @@ while 1:
     print("Please select an option by typing the corresponding number:")
     print("1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit")
     choice = input(">>")
-    #if the input not int or choise print("") and choice = 0
+    if (not choice.isdigit()):
+        choice = 0
     menu(int(choice))
 
