@@ -1,6 +1,5 @@
 import sys
 
-
 dict_code = { 'A':'.-', 'B':'-...',
              'C':'-.-.', 'D':'-..', 'E':'.',
              'F':'..-.', 'G':'--.', 'H':'....',
@@ -17,18 +16,25 @@ dict_code = { 'A':'.-', 'B':'-...',
              '?':'..--..', '/':'-..-.', '-':'-....-',
              '(':'-.--.', ')':'-.--.-'}
 
-
-if len(sys.argv) <= 1:
+if len(sys.argv) < 1:
     print("ERROR")
     exit()
+elif len(sys.argv) == 1:
+    exit()
+for c in sys.argv[1:]:
+    if not c.replace(' ','').isalnum():
+        print("ERROR")
+        exit()
 code = []
 text = [string.upper() for string in sys.argv[1:]]
+index = 0
 for string in text:
     for char in string:
         if (char == ' '):
             code.append("/")
         else:
             code.append(dict_code[char])
-
+    if(len(text)-1 > index):
+        code.append("/")
+    index +=1
 print(" ".join([str(letter) for letter in code]))
-
