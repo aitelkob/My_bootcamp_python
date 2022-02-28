@@ -12,15 +12,15 @@ punctuation and spaces in a given text."""
         space_count = 0
         char_count = 0
         for letter in s:
-            char_count+=1
+            char_count += 1
             if letter.isupper():
-                upper_count+=1
+                upper_count += 1
             if letter.islower():
-                lower_count+=1
+                lower_count += 1
             if letter == " ":
-                space_count+=1
-            if letter in ('!', "," ,"\'" ,";" ,"\"", ".", "-" ,"?"):
-                punct_count+=1
+                space_count += 1
+            if letter in ('!', ",", "\'", ";", "\"", ".", "-", "?"):
+                punct_count += 1
 
         print('The text contains {} characters:'.format(char_count))
         print('- {} upper letters '.format(upper_count))

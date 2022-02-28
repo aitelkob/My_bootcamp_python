@@ -1,6 +1,9 @@
 import sys
+
+
 def parsing_check(argv):
-    usage = "Usage: python operations.py <number1> <number2> \nExample:\n    python operations.py 10 3"
+    usage = "Usage: python operations.py <number1> <number2>\nExample:\n"+
+    "python operations.py 10 3"
     if (len(argv) == 0):
         print(usage)
         exit()
@@ -11,6 +14,7 @@ def parsing_check(argv):
         print("InputError: only numbers\n\n" + usage)
         exit()
     return argv
+
 
 def print_format(argv):
     number = [int(i) for i in argv]
@@ -23,6 +27,7 @@ def print_format(argv):
     else:
         print("Qutient:    ERROR (div by zero)")
         print("Remainder:  ERROR (modulo by zero)")
+
 
 argv = parsing_check(sys.argv[1:])
 print_format(argv)

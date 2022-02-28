@@ -1,7 +1,9 @@
 import sys
 
+
 def clr():
     print("\033c", end="")
+
 
 cookbook = {
     "sandwich": {
@@ -27,7 +29,8 @@ def print_recipe_from_cookbook(recipe):
         print("Recipe for {}:".format(recipe))
         print("Ingredient list: {}".format(cookbook[recipe]["ingredients"]))
         print("To be eaten for {}.".format(cookbook[recipe]["meal"]))
-        print("Takes {} minutes of cooking.".format(cookbook[recipe]["prep_time"]))
+        print("Takes {} minutes of cooking.".format(cookbook[recipe]
+              ["prep_time"]))
     else:
         print("Invalid recipe name.")
 
@@ -39,45 +42,51 @@ def del_recipe(recipe):
     else:
         print("Invalid recipe name.")
 
-def add_recipe(recipe,ingredients, meal ,prep_time):
-    cookbook[recipe] = {"ingredients": ingredients ,"meal": meal,"prep_time" : prep_time}
+
+def add_recipe(recipe, ingredients, meal, prep_time):
+    cookbook[recipe] = {"ingredients": ingredients,
+                        "meal": meal,
+                        "prep_time": prep_time}
     print("Added '{}' to cookbook.".format(recipe))
+
 
 def print_all_recipe():
     [print_recipe_from_cookbook(recipe) for recipe in cookbook.keys()]
 
+
 def menu(choice):
-        clr()
-        if choice == 1:
-            name = input("Enter the name of the recipe you'd like to add: ")
-            if name in cookbook.keys():
-                print("'{}' already exists, overwriting...".format(name))
-                return
-            ingredients = (input("Enter the ingredients in the format "
-                            "'flour,sugar, eggs...': ").split(','))
-            meal = input("Enter the type of meal (lunch, dessert...): ")
-            time = input("Enter the recipe's prep time, in minutes: ")
-            add_recipe(name, ingredients, meal, time)
-        elif choice == 2:
-            name = input("Enter the name of the recipe you'd like to delete: ")
-            del_recipe(name)
-        elif choice == 3:
-            name = input("Please enter the recipe's name to get its details: ")
-            print_recipe_from_cookbook(name)
-        elif choice == 4:
-            print_all_recipe()
-        elif choice == 5:
-            print("Cookbook closed.")
-            exit()
-        else:
-            print("This option does not exist.")
+    clr()
+    if choice == 1:
+        name = input("Enter the name of the recipe you'd like to add: ")
+        if name in cookbook.keys():
+            print("'{}' already exists, overwriting...".format(name))
+            return
+        ingredients = input(
+            "Enter the ingredients in the format " "'flour,sugar, eggs...': "
+        ).split(",")
+        meal = input("Enter the type of meal (lunch, dessert...): ")
+        time = input("Enter the recipe's prep time, in minutes: ")
+        add_recipe(name, ingredients, meal, time)
+    elif choice == 2:
+        name = input("Enter the name of the recipe you'd like to delete: ")
+        del_recipe(name)
+    elif choice == 3:
+        name = input("Please enter the recipe's name to get its details: ")
+        print_recipe_from_cookbook(name)
+    elif choice == 4:
+        print_all_recipe()
+    elif choice == 5:
+        print("Cookbook closed.")
+        exit()
+    else:
+        print("This option does not exist.")
 
 
 while 1:
     print("Please select an option by typing the corresponding number:")
-    print("1: Add a recipe\n2: Delete a recipe\n3: Print a recipe\n4: Print the cookbook\n5: Quit")
+    print("1: Add a recipe\n2: Delete a recipe\n3: " +
+          "Print a recipe\n4: Print the cookbook\n5: Quit")
     choice = input(">>")
     if (not choice.isdigit()):
         choice = 0
     menu(int(choice))
-

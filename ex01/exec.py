@@ -1,7 +1,10 @@
 import sys
 
+
 def reverse(x):
     return x[::-1]
+
+
 if len(sys.argv) == 1:
     print(" ")
 else:

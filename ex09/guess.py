@@ -3,7 +3,8 @@ import random
 
 
 print("This is an interactive guessing game!")
-print("You have to enter a number between 1 and 99 to find out the secret number.")
+print("You have to enter a number between 1 and 99 " +
+      "to find out the secret number.")
 print("Type 'exit' to end the game.")
 print("Good luck!")
 num = random.randint(1, 99)
@@ -16,7 +17,7 @@ while 1:
         break
     elif (not choie.isdigit()):
         print("That's not a number.")
-        cpt_try +=1
+        cpt_try += 1
     else:
         cpt_try += 1
         choie = int(choie)

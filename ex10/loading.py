@@ -1,42 +1,41 @@
+import datetime
+import time
 
 
+def ft_progress_testing(lst):
+    start = datetime.datetime.now()
+    end = len(lst) * 0.05
+    index = 0
+    long = len(lst)
+    for step in lst:
+        index += 1
+        nowtime = datetime.datetime.now() - start
+        secon = nowtime.microseconds/1000000 + nowtime.seconds
+        if step == lst[0]:
+            eta = 0
+            etap = 0
+        elif step == lst[1]:
+            eta = secon * len(lst)
+            etap = secon
+            eta = eta - etap
+        else:
+            eta = eta - etap
+        percen = int(index/len(lst) * 100)
+        icon = int(percen / 5)
+        print("\033c", end="")
+        print("ETA: {} [{}%]".format(((str(round(abs(eta - etap), 2)) +
+              "s").ljust(6, ' ')), percen), end="")
+        print("[" + "=" * icon + ">" + " " * (20 - icon) + "]", end=" ")
+        print("{}/{}".format((str(index)), (str(long))), end="")
+        print(" | elapsed time  {}".format(str(round(secon, 2)) + "s"))
+        print("...")
+        yield step
 
 
-def ft_progress(lst):
-	start = datetime.datetime.now()
-	end = len(lst) * 0.005
-	i = 0
-	length = len(lst)
-	for each in lst:
-		i+=1
-		time = datetime.datetime.now() - start
-
-		s = time.microseconds/1000000 + time.seconds
-		if each == lst[0]:
-			eta = 0
-			step = 0
-		elif each == lst[1]:
-			eta = s * len(lst)
-			step = s
-			eta = eta - step
-		else:
-			eta = eta -step
-		percentage =int(i/len(lst) * 100)
-		perc_count = int(percentage / 5)
-
-		print('\r '+ "ETA: " + (str(round(eta - step, 2)) + "s").ljust(6, ' ')
-			+ " [" + str(percentage).ljust(2) + "%]["
-			+ "="* perc_count +">"+ " " * (20 - perc_count) + "] "
-			+ " " + str(i).rjust(len(str(length))) + "/" + str(length)
-			+ " | elapsed time "
-			+ str(round(s, 2)).ljust(6, ' ') + "s", end='')
-		yield each
-
-
-listy = range(1000)
+listy = range(3000)
 ret = 0
-for elem in ft_progress(listy):
+for elem in ft_progress_testing(listy):
     ret += (elem + 3) % 5
-    sleep(0.01)
+    time.sleep(0.01)
 print()
 print(ret)
