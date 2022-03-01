@@ -6,6 +6,8 @@ punctuation and spaces in a given text."""
     else:
         if (len(text) == 0):
             s = input("What is the text to analyse?")
+        else:
+            s = text[0]
         upper_count = 0
         lower_count = 0
         punct_count = 0

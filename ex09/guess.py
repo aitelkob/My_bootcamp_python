@@ -6,14 +6,14 @@ print("This is an interactive guessing game!")
 print("You have to enter a number between 1 and 99 " +
       "to find out the secret number.")
 print("Type 'exit' to end the game.")
-print("Good luck!")
+print("Good luck!\n")
 num = random.randint(1, 99)
 cpt_try = 1
 
 while 1:
     choie = input("What's your guess between 1 and 99?\n>> ")
     if choie == 'exit':
-        print("Bye!")
+        print("Goodbye!")
         break
     elif (not choie.isdigit()):
         print("That's not a number.")
@@ -23,6 +23,11 @@ while 1:
         choie = int(choie)
         if choie < 1 or choie > 99:
             print("Number is out of range.")
+        elif choie == 42:
+            print("The answer to the ultimate question of", end="")
+            print(" life, the universe and everything is 42.")
+            print("Congratulations! You got it on your first try!")
+            break
         elif choie < num:
             print("Too low!")
         elif choie > num:

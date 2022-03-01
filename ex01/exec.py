@@ -6,7 +6,7 @@ def reverse(x):
 
 
 if len(sys.argv) == 1:
-    print(" ")
+    exit()
 else:
     argv = sys.argv[1:]
     str = reverse(' '.join(argv))

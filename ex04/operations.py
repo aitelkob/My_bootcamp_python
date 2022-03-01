@@ -2,8 +2,9 @@ import sys
 
 
 def parsing_check(argv):
-    usage = "Usage: python operations.py <number1> <number2>\nExample:\n"+
-    "python operations.py 10 3"
+    usage = "Usage: python operations.py <number1> <number2>\nExample:\n"
+    usage_2 = "python operations.py 10 3"
+    usage = usage + usage_2
     if (len(argv) == 0):
         print(usage)
         exit()
