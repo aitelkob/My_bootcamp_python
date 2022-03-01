@@ -1,13 +1,16 @@
 import sys
 
 
-def reverse(x):
-    return x[::-1]
+def testing():
+    lis = []
+    if len(sys.argv) < 2:
+        return
+    list = sys.argv[:0:-1]
+    for word in list:
+        if not (len(word) == 0):
+            lis.append(word[::-1])
+    if len(lis) != 0:
+        print(' '.join(lis).swapcase())
 
 
-if len(sys.argv) == 1:
-    exit()
-else:
-    argv = sys.argv[1:]
-    str = reverse(' '.join(argv))
-    print(str.swapcase())
+testing()

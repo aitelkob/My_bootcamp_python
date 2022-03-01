@@ -9,7 +9,7 @@ def parsing_check(argv):
         print(usage)
         exit()
     elif (len(argv) != 2):
-        print("InputError: too many arguments\n\n" + usage)
+        print("InputError: too many  or few arguments\n\n" + usage)
         exit()
     elif not argv[0].isdigit() or not argv[1].isdigit():
         print("InputError: only numbers\n\n" + usage)

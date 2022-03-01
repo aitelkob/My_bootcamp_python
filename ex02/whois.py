@@ -2,7 +2,7 @@ import sys
 
 
 if len(sys.argv) == 1:
-    print(" ")
+    exit()
 else:
     argv = sys.argv[1:]
     if not (argv[0].isdigit()):

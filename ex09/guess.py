@@ -8,7 +8,7 @@ print("You have to enter a number between 1 and 99 " +
 print("Type 'exit' to end the game.")
 print("Good luck!\n")
 num = random.randint(1, 99)
-cpt_try = 1
+cpt_try = 0
 
 while 1:
     choie = input("What's your guess between 1 and 99?\n>> ")

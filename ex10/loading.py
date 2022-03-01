@@ -2,7 +2,7 @@ import datetime
 import time
 
 
-def ft_progress_testing(lst):
+def ft_progress(lst):
     start = datetime.datetime.now()
     end = len(lst) * 0.05
     index = 0
@@ -30,12 +30,3 @@ def ft_progress_testing(lst):
         print(" | elapsed time  {}".format(str(round(secon, 2)) + "s"))
         print("...")
         yield step
-
-
-listy = range(3000)
-ret = 0
-for elem in ft_progress_testing(listy):
-    ret += (elem + 3) % 5
-    time.sleep(0.01)
-print()
-print(ret)
