@@ -1,15 +1,18 @@
 import stdarray
 
+
 class Vector:
     def __init__(self,values):
-        self.values = []
-        if isinstance(values,(list,int,tuple)) == False:
-            raise ValueError("Vector Error")
-        if isinstance(values,int) and a < 0:
-            raise ValueError("empty")
-        if isinstance(values,tuple) and ((len(a) != 2) or not all([isinstance(val,int) for val in values]) or (values[0] >= values [1])):
-            raise ValueError("wrong format")
-
+        self.values =values[:]
+        self.n = len(values)
+    
+    def __getitem__(self,i):
+        return self._coords[i]
+    def __add__(self,other):
+        result = stdarray.create1D(self.n,0)
+        for i in range(self.n):
+            result[i] = self.values[i] + other.values[i]
+        return Vector(result)
 
 def main():
     xcoords = [1.0,2.0,3.0,4.0]
